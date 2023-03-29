@@ -17,6 +17,7 @@ To install Phots, run the following command:
 
 ```bash
 npm install phots
+```
 
 ## Usage
 
