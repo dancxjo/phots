@@ -1,12 +1,59 @@
+import { Lexeme } from "./Lexeme";
+import { Lexicon } from "./Lexicon";
 import { Phoneme } from "./Phoneme";
 import { PhonemicString } from "./PhonemicString";
 import { PhoneticString, phots } from "./PhoneticString";
 
 export class Variant {
+  // TODO: Inherit the lexicon from the ancestor
+  readonly lexicon: Lexicon;
+
   constructor(
     readonly name: string,
-    readonly phonemeInventory: Phoneme[] = []
-  ) {}
+    protected ancestor?: Variant,
+    protected descendants: Variant[] = [],
+    readonly phonemeInventory: Phoneme[] = [],
+    lexicon?: Lexicon,
+  ) {
+    if (lexicon) {
+      this.lexicon = lexicon;
+    } else {
+      this.lexicon = new Lexicon(this);
+      // TODO: Inherit the lexicon from the ancestor
+    }
+
+    // TODO: Inherit everything from ancestor if possible
+
+  }
+
+  hasWord(orthographic: string): Lexeme {
+      throw new Error("Method not implemented.");
+  }
+
+
+  makeDescendant(descendantName: string): Variant {
+    const descendant = new Variant(descendantName, this, [], [...this.phonemeInventory]);
+    this.descendants.push(descendant);
+    return descendant;
+  }
+
+  makeAncestor(ancestor: string): Variant {
+    this.ancestor = new Variant(ancestor, undefined, [this], [...this.phonemeInventory]);
+    return this.ancestor;
+  }
+
+  descendsFrom(ancestor: Variant): boolean {
+    if (this.ancestor === ancestor) {
+      return true;
+    }
+
+    if (this.ancestor) {
+      return this.ancestor.descendsFrom(ancestor);
+    }
+
+    return false;
+  }
+
 
   phoneme(phone: PhoneticString): Phoneme {
     const phonemeFromInventory = this.phonemeInventory.find((phoneme) => phoneme.phone === phone);
@@ -60,5 +107,13 @@ export class Variant {
       before.push(phoneme);
     }
     return realized;
+  }
+
+  deriveWord(root: Lexeme): PhonemicString {
+    throw new Error("Method not implemented.");
+  }
+
+  spell(arg0: PhonemicString): string {
+    throw new Error("Method not implemented.");
   }
 }
