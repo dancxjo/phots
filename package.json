@@ -1,0 +1,42 @@
+{
+  "name": "phots",
+  "version": "1.0.0",
+  "description": "A library for working with linguistic structures",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dancxjo/phots.git"
+  },
+  "keywords": [
+    "phonetic",
+    "phone",
+    "phoneme",
+    "morpheme",
+    "lexeme",
+    "linguistics",
+    "language"
+  ],
+  "author": "Travis Reed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dancxjo/phots/issues"
+  },
+  "homepage": "https://github.com/dancxjo/phots#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.5.0",
+    "prettier": "^2.8.7",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.2"
+  }
+}
